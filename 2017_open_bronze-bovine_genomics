@@ -1,0 +1,47 @@
+//buggy, something about the inputting i think because with the manual input it worked so idk :/
+
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+using namespace std;
+
+
+
+int main(void) {
+    int N, M;
+    ifstream fin("cownomics.in");
+    ofstream fout("cownomics.out");
+    fin >> N >> M;
+    string genomes[N*2][M];
+    for (int z = 0; z < N*2; z++) {
+        for (int y = 0; y < M; y++) {
+            fin >> genomes[z][y];
+        }
+    }
+    int count = 0;
+    int res = 0;
+
+
+
+    for (int i = 0; i < M; i++) {
+            count = 0;
+            for (int column2 = N; column2 < N*2; column2++) {
+                string g2 = genomes[column2][i];
+
+                for (int column = 0; column < N; column++) {
+                    string g = genomes[column][i];
+                    if (g != g2) {
+                        count++;
+                    }
+                }
+
+
+            }
+            if (count == N*N) {
+                res++;
+            }
+    }
+    fout << res << "\n";
+}
