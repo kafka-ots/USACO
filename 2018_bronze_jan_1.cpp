@@ -42,11 +42,11 @@ int main(void) {
   if (feedBoard.covers(lawnBoard.x2, lawnBoard.y1)) count++;
 
   if (count < 2) {
-    count << lawnBoard.area();
+    cout << lawnBoard.area();
   } else if (count == 4) {
     cout << 0;
   } else {
     Rectangle inter = feedBoard.intersection(lawnBoard);
-    cout << lawnBoard.area()-inter.area();
+    cout << (lawnBoard.area()-inter.area());
   }
 }
